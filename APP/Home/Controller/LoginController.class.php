@@ -5,7 +5,7 @@ header("content-type:text/html;charset=utf8");
 class LoginController extends Controller
 {
 	public function test() {
-		$user = M("user");
+		$user = M("agent_user");
 		$invite = "DLWYZ0";
 		if ( $super = $user->where("invite_code = '$invite'")->find() ) {
 			echo var_dump($super) . "<br/>";
@@ -18,20 +18,27 @@ class LoginController extends Controller
 		}
 	}
 
+	public function getAnnouncement() {
+		$announcement = M("main_announcement");
+		$text = $announcement->order('-create_time')->find();
+		echo $text['text'];
+	}
+
 	public function login()	{
 		$mobile=I("post.mobile"); 
 		$password=I("post.password");
 		$password=md5($password);
-		$user = M("user");
+		$user = M("agent_user");
 		if( $one = $user->where("mobile = $mobile")->find() ) {
 			if($one["password"]==$password){
-				$super_id = $one['superior'];
-				$super = $user->where("id = $super_id")->find();
+				$agent = M("agent_agent");
+				$superior_id = $one['superior_id'];
+				$invite_code = $agent->where("id = $superior_id")->find()['invite_code'];
 				echo json_encode(array(
 					"status"=>1, 
 					"mobile" => $mobile,
-					"invite_code"=>$super['invite_code'],
 					"vip_date" => $one['vip_date'],
+					"invite_code" => $invite_code,
 					"id" => $one['id'],
 				));     // 登录成功
 			} else {
@@ -56,18 +63,20 @@ class LoginController extends Controller
 			exit();                                   // 2 短信验证码输入错误
 		}
 
-		$user = M("user");
+		$user = M("agent_user");
 		$datetime = new \DateTime;
 		$data = array(
 			'mobile' => $mobile, 
 			'password' => md5(I("post.password")),
 			"vip_date" => $datetime->format('Y-m-d H:i:s'),
-			"superior" => 0,
+			"create_time" => $datetime->format('Y-m-d H:i:s'),
+			"vip_class" => "注册会员",
+			"superior_id" => 0,
 		);
 		// 添加上级
-		
-		if ( $super = $user->where("invite_code = '$invite'")->find() )
-			$data['superior'] = (int)$super['id'];
+		$agent = M("agent_agent");
+		if ( $super = $agent->where("invite_code = '$invite'")->find() )
+			$data['superior_id'] = (int)$super['id'];
 		else {
 			echo json_encode(array("status"=>4));     // 4. 邀请码错误
 			exit();
@@ -89,7 +98,7 @@ class LoginController extends Controller
 		$mobile = I("post.mobile");
 		$old_password = md5(I("post.old_password"));
 
-		$user = M("user");
+		$user = M("agent_user");
 		$data = array(
 			'password' => md5( I("post.new_password") ),
 		);
@@ -107,7 +116,7 @@ class LoginController extends Controller
 	}
 
 	public function find() {
-		$user = M("user");
+		$user = M("agent_user");
 		$mobile = I("post.mobile");
 		$mobile_verify = I("post.mobile_verify");
 
@@ -140,14 +149,12 @@ class LoginController extends Controller
 
 	public function send_verify() {
 		$obj=new \Org\Phone\Phone();
-		// $mobile = I("post.mobile");
-		$mobile = "18434755428";
-
-		// $user = M("user");
-		// if ( $user->where("mobile = $mobile")->find() ) {
-		// 	echo json_encode(array("status"=>2));          // 2 用户已存在
-		// 	exit();
-		// }
+		$mobile = I("post.mobile");
+		$user = M("agent_user");
+		if ( $user->where("mobile = $mobile")->find() ) {
+			echo json_encode(array("status"=>2));          // 2 用户已存在
+			exit();
+		}
 
 		$operation = I("post.operation");     // 请求类型
 		$status=json_decode( $obj->send($mobile, $operation) );

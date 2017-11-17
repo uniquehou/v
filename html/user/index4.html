@@ -85,8 +85,12 @@
 		</style>
 		
 	 	<script type="text/javascript">
-//			 if (!window.localStorage.getItem("id"))
-//			 	mui.openWindow("login.html");
+			 if (!window.localStorage.getItem("id"))
+			 	mui.openWindow("login.html");
+			 else {
+			 	document.querySelector(".user_id").innerText = window.localStorage.getItem("id");
+			 	document.querySelector(".vip_data").innerText = window.localStorage.getItem("vip_data");
+			 }
 		</script> 
 	</head>
 
