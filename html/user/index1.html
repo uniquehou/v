@@ -216,7 +216,7 @@
 			
 			var announcement = document.querySelector("#announcement");
 			// 获取公告内容
-			mui.ajax("http://localhost/v/index.php/home/login/getAnnouncement", {
+			mui.ajax("http://123.207.254.239/v/index.php/home/login/getAnnouncement", {
 				dataType: "text",
 				success: function(text) {
 					announcement.innerText = text;
@@ -277,7 +277,7 @@
 			});
 			
 			function pulldownRefresh() {
-				mui.ajax("http://localhost/v/index.php/home/login/get_lives", {
+				mui.ajax("http://123.207.254.239/v/index.php/home/login/get_lives", {
 					dataType: "json",
 					success: function(lives) {
 						var ul = document.querySelector("ul");
