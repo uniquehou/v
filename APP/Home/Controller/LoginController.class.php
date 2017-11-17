@@ -5,23 +5,52 @@ header("content-type:text/html;charset=utf8");
 class LoginController extends Controller
 {
 	public function test() {
-		$user = M("agent_user");
-		$invite = "DLWYZ0";
-		if ( $super = $user->where("invite_code = '$invite'")->find() ) {
-			echo var_dump($super) . "<br/>";
-			$data['superior'] = (int)$super['id'];
-			exit(var_dump($data));
-		}
-		else {
-			echo json_encode(array("status"=>4));     // 4. 邀请码错误
-			exit();
-		}
+		$Live = M("main_live");
+		$lives = $Live->select();
+		$this->ajaxReturn($lives);
 	}
 
 	public function getAnnouncement() {
 		$announcement = M("main_announcement");
 		$text = $announcement->order('-create_time')->find();
 		echo $text['text'];
+	}
+
+	public function recharge() {
+		$code = I("post.code");
+		$mobile = I("post.mobile");
+
+		$Carmel = M("agent_carmel");
+		$carmel = $Carmel->where("code = '$code'")->find();
+		if (! $carmel )
+			echo json_encode(array("status"=>2));     // 无此卡密
+		else if ($carmel['status'] == 1) 
+			echo json_encode(array("status"=>3));
+		else if ($carmel['status'] == 0) {
+			$add_month = 0;
+			if ($carmel['type_class'] == "月卡")
+				$add_month = 1;
+			else if ($carmel['type_class'] == "季卡" )
+				$add_month = 3;
+			else if ($carmel['type_class'] == "年卡" )
+				$add_month = 12;
+
+			$User = M("agent_user");
+			$user = $User->where("mobile = $mobile")->find();
+			$vip_date = $user['vip_date'];
+			$date = date_create($vip_date);
+			date_add($date, date_interval_create_from_date_string("$add_month months"));
+			$vip_date = date_format($date, "Y-m-d H:m:s");
+			$User->where("mobile = $mobile")->save(array("vip_date"=>$vip_date));   // 更新用户VIP时间
+			$Carmel->where("code = '$code'")->save(array("status"=>1));    // 卡密已使用
+			echo json_encode(array("status"=>1, "vip_date"=>$vip_date));     // 充值成功
+		}
+	}
+
+	public function get_lives() {
+		$Live = M("main_live");
+		$lives = $Live->select();
+		$this->ajaxReturn($lives);
 	}
 
 	public function login()	{
@@ -33,7 +62,8 @@ class LoginController extends Controller
 			if($one["password"]==$password){
 				$agent = M("agent_agent");
 				$superior_id = $one['superior_id'];
-				$invite_code = $agent->where("id = $superior_id")->find()['invite_code'];
+				$invite_code = $agent->where("id = $superior_id")->find();
+				$invite_code = $invite_code['invite_code'];
 				echo json_encode(array(
 					"status"=>1, 
 					"mobile" => $mobile,
@@ -49,50 +79,6 @@ class LoginController extends Controller
 		}
 	}
 
-	public function regis() {
-		$mobile = I("post.mobile");
-		$mobile_verify = I("mobile_verify");
-		$verify_code = I("post.verify");
-		$invite = I("post.invite");
-
-   		// 短信验证码验证
-		$obj=new \Org\Phone\Phone();
-		$flag= json_decode( $obj->Verify($mobile, $mobile_verify) );
-		if ( isset($flag->code)) {
-			echo json_encode(array("status"=>2));
-			exit();                                   // 2 短信验证码输入错误
-		}
-
-		$user = M("agent_user");
-		$datetime = new \DateTime;
-		$data = array(
-			'mobile' => $mobile, 
-			'password' => md5(I("post.password")),
-			"vip_date" => $datetime->format('Y-m-d H:i:s'),
-			"create_time" => $datetime->format('Y-m-d H:i:s'),
-			"vip_class" => "注册会员",
-			"superior_id" => 0,
-		);
-		// 添加上级
-		$agent = M("agent_agent");
-		if ( $super = $agent->where("invite_code = '$invite'")->find() )
-			$data['superior_id'] = (int)$super['id'];
-		else {
-			echo json_encode(array("status"=>4));     // 4. 邀请码错误
-			exit();
-		}
-		// 注册
-		if ( $user->where("mobile = $mobile")->find() ) {
-			echo json_encode(array("status"=>2));      // 用户已存在
-		} else {
-			if ( $user->create($data) ) {
-				$user->add();
-				echo json_encode(array("status"=>1));      // 1 注册成功
-			} else {
-				echo json_encode(array("status"=>0));      // 0 注册失败
-			}
-		}	
-	}
 
 	public function modify() {
 		$mobile = I("post.mobile");

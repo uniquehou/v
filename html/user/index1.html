@@ -185,36 +185,6 @@
 			</div>
 			<div class="show_list">
 				<ul>
-					<li>
-						<img src="../images/show/show-3.jpg" />
-						<p class="show_name">test</p>
-						<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
-					</li>
-					<li>
-						<img src="../images/show/show-3.jpg" />
-						<p class="show_name">test</p>
-						<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
-					</li>
-					<li>
-						<img src="../images/show/show-3.jpg" />
-						<p class="show_name">test</p>
-						<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
-					</li>
-					<li>
-						<img src="../images/show/show-3.jpg" />
-						<p class="show_name">test</p>
-						<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
-					</li>
-					<li>
-						<img src="../images/show/show-3.jpg" />
-						<p class="show_name">test</p>
-						<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
-					</li>
-					<li>
-						<img src="../images/show/show-3.jpg" />
-						<p class="show_name">test</p>
-						<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
-					</li>
 				</ul>		
 			</div>
 		</div>
@@ -263,6 +233,34 @@
 //			}
 //			MyMar = setInterval(Marquee, 1000)
    
+   			// 比较 VIP 时间
+			Date.prototype.Format = function (fmt) { //author: meizz
+				var o = {
+					"M+": this.getMonth() + 1, //月份
+					"d+": this.getDate(), //日
+					"h+": this.getHours(), //小时
+					"m+": this.getMinutes(), //分
+					"s+": this.getSeconds(), //秒
+					"q+": Math.floor((this.getMonth() + 3) / 3), //季度
+					"S": this.getMilliseconds() //毫秒
+				};
+				if (/(y+)/.test(fmt))
+					fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+				for (var k in o)
+					if (new RegExp("(" + k + ")").test(fmt))
+						fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+				return fmt;
+			}
+   			mui("ul").on('tap', "li", function() {
+				var date = new Date();
+				var now_date = date.Format("yyyy-MM-dd hh:mm:ss");
+   				var vip_date =  window.localStorage.getItem("vip_date");
+   				if ( (new Date(now_date.replace(/-/g,"\/"))) > (new Date(vip_date.replace(/-/g,"\/"))) )
+   					mui.alert("会员到期，请充值");
+   			});
+
+
+
 			mui.init({
 			  pullRefresh : {
 			    container:"#pullrefresh",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
@@ -279,18 +277,24 @@
 			});
 			
 			function pulldownRefresh() {
-				setTimeout(function() {
-//					var table = document.body.querySelector('.mui-table-view');
-//					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-//					for (var i = cells.length, len = i + 3; i < len; i++) {
-//						var li = document.createElement('li');
-//						li.className = 'mui-table-view-cell';
-//						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
-//						//下拉刷新，新纪录插到最前面；
-//						table.insertBefore(li, table.firstChild);
-//					}
-					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
-				}, 1500);
+				mui.ajax("http://localhost/v/index.php/home/login/get_lives", {
+					dataType: "json",
+					success: function(lives) {
+						var ul = document.querySelector("ul");
+						for(var i=0; i<lives.length; i++) {
+							li = document.createElement('li');
+							li.onclick = "to_lives();";
+							li.innerHTML = '<img src="/admin/media/' + lives[i].show_image + '" />' +
+								'<p class="show_name">' + lives[i].name + '</p>' +
+								'<div class="count"><img src="../images/shexiangtou.png" /> <span>' + lives[i].anchor_count + '</span></div>';
+							ul.appendChild(li);
+						}
+					},
+					error: function() {
+						mui.toast("服务器繁忙，请稍后重试");
+					}
+				});
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
 			}
 
 		</script>

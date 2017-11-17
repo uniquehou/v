@@ -76,9 +76,9 @@
 		<div class="do">
 			<div class="mui-input-row">
 				<label>卡密</label>
-				<input type="text" placeholder="请输入卡密码" />
+				<input id="code" type="text" placeholder="请输入卡密码" />
 			</div>
-			<button type="button" class="mui-btn mui-btn-red">续费</button>
+			<button type="button" class="mui-btn mui-btn-red" onclick="recharge();">续费</button>
 		</div>
 		
 		<div class="show">
@@ -106,6 +106,32 @@
 	<script type="text/javascript" src="../js/mui.min.js" ></script>
 	<script type="text/javascript">
 		mui.init();
+
+		function recharge() {
+			code = document.querySelector("#code").value;
+			mui.ajax("http://localhost/v/index.php/home/login/recharge", {
+				type: "POST",
+				dataType: "text",
+				data: {
+					"code": code,
+					"mobile": window.localStorage.getItem("mobile"),
+				},
+				success: function(data) {
+					data = JSON.parse(data);
+					if (data.status == 1) {
+						mui.alert("充值成功");
+						window.localStorage.setItem("vip_date", data.vip_date);
+					}
+					else if (data.status == 2)
+						mui.toast("无此卡密");
+					else if (data.status == e)
+						mui.alert("此卡密已使用");
+				},
+				error: function() {
+					mui.toast("服务器繁忙，请稍后重试");
+				}
+			})
+		}
 	</script>
 </body>
 </html>
