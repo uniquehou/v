@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				outline: 0;
+			}
+			body {
+				background-color: #f0f1f3;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				line-height: normal;
+			}
+			header {
+				background-color: #FFFFFF;
+				height: 50px;
+				font-size: 20px;
+				line-height: 50px;
+				text-align: center;
+			}
+			header p {
+				font-size: 20px;
+				color: #343434;
+			}
+			.banner {
+				width: 100%;
+				height: auto;
+			}
+			.show {
+				height: 50%;
+				margin: 5px 0;
+				background-color: #FFFFFF;
+			}
+			.show img {
+				width: 90%;
+				margin: 20px 5%;
+			}
+			/*footer*/
+			.mui-active .mui-icon,
+			.mui-active .mui-tab-label {
+				color: #ff4e6f;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<p>云播</p>
+		</header>
+		
+		<img class="banner" src="../images/banner.jpg">
+		<div class="show">
+			<img src="../images/shipin.jpg">
+			<img src="../images/xiaoshuo.jpg">
+		</div>
+		
+		<nav class="mui-bar mui-bar-tab">
+			<a id="listsTab" class="mui-tab-item" href="index1.html">
+				<span class="mui-icon iconfont icon-shexiangtou"></span>
+				<span class="mui-tab-label">主页</span>
+			</a>
+			<a id="listsTab" class="mui-tab-item" href="index2.html">
+				<span class="mui-icon iconfont icon-live_fill"></span>
+				<span class="mui-tab-label">云播</span>
+			</a>
+			<a id="listsTab" class="mui-tab-item" href="index3.html">
+				<span class="mui-icon iconfont icon-dianying1"></span>
+				<span class="mui-tab-label">影视</span>
+			</a>
+			<a id="listsTab" class="mui-tab-item" href="index4.html">
+				<span class="mui-icon iconfont icon-icon_"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/index.js" ></script>
+		<script type="text/javascript">
+			document.querySelectorAll("a.mui-tab-item")[1].classList.add("mui-active");		
+			
+			mui.init();
+			
+			footer = document.getElementsByTagName("nav")[0];
+			footer_top = footer.getBoundingClientRect().top;
+			show = document.querySelector(".show");
+			show_top = show.getBoundingClientRect().top;
+			show.style.height = footer_top - show_top + "px";
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,24 @@
+[ 2017-11-10T00:09:54+08:00 ] ::1 /v/index.php/home/login/regis
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'DLWYZ0' in 'where clause'
+
+[ 2017-11-10T00:15:42+08:00 ] ::1 /v/index.php/home/login/regis
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'DLWYZ' in 'where clause'
+
+[ 2017-11-10T00:20:49+08:00 ] ::1 /v/index.php/home/login/regis
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'DLWY' in 'where clause'
+
+[ 2017-11-10T00:21:35+08:00 ] ::1 /v/index.php/home/login/regis
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'DLWYZ0' in 'where clause'
+
+[ 2017-11-10T00:29:45+08:00 ] ::1 /v/index.php/home/login/test
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+
+[ 2017-11-10T00:30:18+08:00 ] ::1 /v/index.php/home/login/test
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'abc' in 'where clause'
+
+[ 2017-11-10T11:26:54+08:00 ] ::1 /v/index.php/home/login/send_verify
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+
+[ 2017-11-10T11:27:12+08:00 ] ::1 /v/index.php/home/login/send_verify
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+

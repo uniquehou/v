@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>login</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<script type="text/javascript" src="../js/mui.min.js" ></script>
+		<script type="text/javascript" src="../js/vue.min.js" ></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				background-color: #f0f1f3;
+				line-height: normal;
+			}
+			
+			.banner {
+				background-image: url(../images/banner-index4.png);
+				/*background-size: 100% 100%;*/
+				background-repeat: no-repeat;
+				background-position: ;
+			}
+			.logo {
+				margin: 10% 35% 0 35%;
+				width: 30%;
+			}
+			.user_id {
+				text-align: center;
+				color: #FFFFFF;
+				margin: 10px;
+			}
+			.vip_data {
+				background-color: rgba(49, 53, 105, 0.5);
+				padding: 10px 10px;
+				color: #FFFFFF;
+			}
+			.vip_data #vip_data {
+				float: right;
+			}
+			
+			/*footer*/
+			.mui-active .mui-icon,
+			.mui-active .mui-tab-label {
+				color: #ff4e6f;
+			}
+			
+			.main {
+				position: relative;
+				width: 100%;
+			}
+			li {
+				display: flex;
+			}
+			li img {
+				width: 20px;
+				height: 20px;
+				margin: 0 15px 0 0px;
+			}
+			li span {
+				position: absolute;
+				top: auto;
+				right: 0px;
+				color: #888888;
+			}
+			.exit {
+				margin: 30px 10%;
+				display: block;
+				width: 80%;
+			}
+			/*边框*/
+			.mui-table-view::before {
+				height: 0px;
+			}
+			.mui-table-view-cell::after {
+				height: 0px;
+			}
+			.mui-table-view-cell {
+				border-bottom: 1px #E5E5E5 solid;
+			}
+		</style>
+		
+	 	<script type="text/javascript">
+//			 if (!window.localStorage.getItem("id"))
+//			 	mui.openWindow("login.html");
+		</script> 
+	</head>
+
+	<body>
+		<div class="banner">
+			<img class="logo" src="../images/logo-index4.png" />
+			<p class="user_id">ID: <span id="user_id">15111111</span></p>
+			<p class="vip_data">VIP到期时间 <span id="vip_data">2017-6-13 13:23:20</span></p>
+		</div>
+		
+		<div class="main">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<img src="../images/user-1.jpg" />
+					<a href="recharge.html">会员续费</a>
+					<span class="mui-icon mui-icon-arrowright mui-pull-right"></span>
+				</li>
+				<li class="mui-table-view-cell">
+					<img src="../images/user-2.jpg" />
+					<a href="invite.html">邀请好友</a>
+					<span class="mui-icon mui-icon-arrowright"></span>
+				</li>
+				<li class="mui-table-view-cell">
+					<img src="../images/user-3.jpg" />
+					<a href="modity.html">修改密码</a>
+					<span class="mui-icon mui-icon-arrowright"></span>
+				</li>
+			</ul>
+			
+			<button type="button" class="exit mui-btn mui-btn-danger" onclick="exit();">退出登录</button>
+		</div>
+		
+		<nav class="mui-bar mui-bar-tab">
+			<a id="defaultTab" class="mui-tab-item" href="index1.html">
+				<span class="mui-icon iconfont icon-shexiangtou"></span>
+				<span class="mui-tab-label">主页</span>
+			</a>
+			<a id="listsTab" class="mui-tab-item" href="index2.html">
+				<span class="mui-icon iconfont icon-live_fill"></span>
+				<span class="mui-tab-label">云播</span>
+			</a>
+			<a id="listsTab" class="mui-tab-item" href="index3.html">
+				<span class="mui-icon iconfont icon-dianying1"></span>
+				<span class="mui-tab-label">影视</span>
+			</a>
+			<a id="listsTab" class="mui-tab-item" href="index4.html">
+				<span class="mui-icon iconfont icon-icon_"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		
+		<script type="text/javascript" src="../js/index.js" ></script>
+		<script type="text/javascript">
+			document.querySelectorAll("a.mui-tab-item")[3].classList.add("mui-active");
+			
+			mui.init();
+			
+			//			exit
+			function exit() {
+				window.localStorage.clear();
+				mui.openWindow('login.html');
+			}
+			
+//			data
+			document.querySelector("#user_id").innerText = window.localStorage.getItem("id");
+			document.querySelector("#vip_data").innerText = window.localStorage.getItem("vip_date");
+		
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,282 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				-webkit-user-select: none;
+				outline: 0;
+				overflow: visible;
+			}
+			div {
+				overflow-y: visible;
+			}
+			body {
+				background-color: #f0f1f3;
+				line-height: normal;
+			}
+			header {
+				background-color: #FFFFFF;
+				height: 50px;
+				font-size: 20px;
+				line-height: 50px;
+				text-align: center;
+				color: #333333;
+			}
+			header p {
+				font-size: 20px;
+				color: #343434;
+			}
+			/*banner*/
+			.banner img {
+				display: block;
+				z-index: 1;
+				width: 100%;
+				height: auto;
+			}
+			.banner p {
+				position: absolute;
+				top: 0px;
+				height: 1em;
+				z-index: 10;
+				color: #FFFFFF;
+				display: flex;
+				width: 100%;
+				/*padding-left: 10px;*/
+				height: 20px;
+				background-color: rgba(49, 53, 105, 0.5);
+			}
+			.banner p img {
+				width: 15px;
+				height: 15px;
+				margin-top: 1px;
+				margin-left: 10px;
+			}
+			.banner marquee {
+				padding-left: 3px;
+				font-size: 13px;
+				width: 100%;
+				font-family: "楷体";
+			}
+			/*footer*/
+			.mui-active .mui-icon,
+			.mui-active .mui-tab-label {
+				color: #ff4e6f;
+			}
+			/*show_list*/
+			.show {
+				height: 50%;
+				margin: 5px 0;
+				background-color: #FFFFFF;
+			}
+			.show img {
+				width: 90%;
+				margin: 20px 5%;
+			}
+			
+			.main {
+				margin: 5px 0px 5px 0px;
+				background-color: #FFFFFF;
+				padding-top: 5px;
+			}
+			.top {
+				font-size: 13px;
+				margin: 10px;
+				color: #4e3e8c;
+				border-left: 3px #4e3e8c solid ;
+				font-weight: bold;
+			}
+			.top p {
+				color: #4e3e8c;
+				font-size: 13px;
+				font-weight: bold;
+			}
+			.red {
+				background-color: #ff4e6f;
+				color: #FFFFFF;
+				padding: 1px;
+				font-size: 10px;
+				line-height: 13px;
+				border-radius: 10%;
+			}
+			.sum {
+				float: right;
+				color: #b2b2b2;
+			}
+			table {
+				border-collapse: collapse;
+			}
+			td {
+				width: 30%;
+				padding-top: 10px;
+				border-top: 1px #e5e5e5 solid;
+				border-right: 1px #e5e5e5 solid;
+				text-align: center;
+				font-size: 15px;
+			}
+			tr td:last-child {
+				border-right: 0px;
+			}
+			td img {
+				width: 40%;
+				height: auto;
+				margin: 0 25%;
+			}
+			.show_list {
+				margin-bottom: 50px;
+			}
+			.show_name {
+				font-family: "新宋体";
+				margin: 5px 0;
+				color: #1a1a1a;
+			}
+			.count{
+				width: auto;
+				max-width: 33%;
+				height: 24px;
+				border-radius: 12px;
+				background-color: #2ebfc7;
+				margin: 0 33% 2px 33%;
+				font-size: 10px;
+				color: #FFFFFF;
+				display: flex;
+				padding: 8px 0px;
+			}
+			.count img {
+				width: 12px;
+				height: 8px;
+				margin-left: 15%;
+				margin-right: 3px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="banner">
+			<img class="banner" src="../images/banner.jpg">
+			<p> <img src="../images/laba.png" /> <marquee loop="-1">这是一些公告</marquee> </p>
+		</div>
+		
+		<div id="pullrefresh">
+		<div class="main">
+			<div class="top">
+				<p> &nbsp; 直播机构  &nbsp; <span class="red">持续增长</span> <span class="sum">共9个</span></p>
+			</div>
+			<div class="show_list">
+				<table>
+					<tr>
+						<td>
+							<img src="../images/show/show-1.jpg" />
+							<p class="show_name">翻过</p>
+							<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
+						</td>
+						<td>
+							<img src="../images/show/show-2.jpg" />
+							<p class="show_name">男人团</p>
+							<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
+						</td>
+						<td>
+							<img src="../images/show/show-3.jpg" />
+							<p class="show_name">黑夜</p>
+							<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img src="../images/show/show-4.jpg" />
+							<p class="show_name">天骄</p>
+							<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
+						</td>
+						<td>
+							<img src="../images/show/show-5.jpg" />
+							<p class="show_name">么么</p>
+							<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
+						</td>
+						<td>
+							<img src="../images/show/show-6.jpg" />
+							<p class="show_name">爱吧</p>
+							<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img src="../images/show/show-7.jpg" />
+							<p class="show_name">亚洲热</p>
+							<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
+						</td>
+						<td>
+							<img src="../images/show/show-8.jpg" />
+							<p class="show_name">球球</p>
+							<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
+						</td>
+						<td>
+							<img src="../images/show/show-9.jpg" />
+							<p class="show_name">夜秀</p>
+							<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img src="../images/show/show-9.jpg" />
+							<p class="show_name">夜秀</p>
+							<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
+						</td>
+						<td>
+							<img src="../images/show/show-4.jpg" />
+							<p class="show_name">天骄</p>
+							<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
+						</td>
+						<td>
+							<img src="../images/show/show-2.jpg" />
+							<p class="show_name">男人团</p>
+							<div class="count"><img src="../images/shexiangtou.png" /> <span>22</span></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+		
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+//			mui.init({
+//			  pullRefresh : {
+//			    container:"#pullrefresh",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+//			    down : {
+//			      style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+//			      color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+//			      height:'50px',//可选,默认50px.下拉刷新控件的高度,
+//			      range:'100px', //可选 默认100px,控件可下拉拖拽的范围
+//			      offset:'300px', //可选 默认0px,下拉刷新控件的起始位置
+//			      auto: true,//可选,默认false.首次加载自动上拉刷新一次
+//			      callback: pulldownRefresh() //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+//			    }
+//			  }
+//			});
+//			
+//			function pulldownRefresh() {
+//				setTimeout(function() {
+////					var table = document.body.querySelector('.mui-table-view');
+////					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+////					for (var i = cells.length, len = i + 3; i < len; i++) {
+////						var li = document.createElement('li');
+////						li.className = 'mui-table-view-cell';
+////						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+////						//下拉刷新，新纪录插到最前面；
+////						table.insertBefore(li, table.firstChild);
+////					}
+//					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+//				}, 1500);
+//			}
+		</script>
+	</body>
+
+</html>

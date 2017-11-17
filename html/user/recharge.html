@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>recharge</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<style type="text/css">
+		body {
+			background-color: #F0F1F3;
+		}
+		.mui.bar {
+			background-color: #FFFFFF;
+		}
+		.mui-title {
+			color: #343434;
+			font-weight: bold;
+		}
+		.mui-content {
+			position: relative;
+			top: 50px;
+		}
+		.do {
+			width: 100%;
+			height: 120px;
+		}
+		.mui-input-row {
+			background-color: #FFFFFF;
+			position: relative;
+			width: 90%;
+			left: 5%;
+			top: 10px;
+		}
+		.mui-input-row label {
+			width: 20%;
+		}
+		.mui-input-row label~input {
+			width: 80%;
+		}
+		.do .mui-btn {
+			position: relative;
+			top: 30px;
+			left: 5%;
+			width: 90%;
+			padding: 10px 0px;
+			background-color: #FF4E66;
+		}
+		.show {
+			width: 100%;
+			height: auto;
+			background-color: #FFFFFF;
+			padding: 7% 10%;
+		}
+		.show img {
+			width: 46%;
+			height: auto;
+		}
+		.show img:nth-child(2n) {
+			margin-left: 6%;
+		}
+		.show_text {
+			margin: 10px;
+		}
+		.show_contact {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<header class="mui-bar mui-bar nav">
+		<a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+		<h1 class="mui-title">会员续费</h1>
+	</header>
+	
+	<div class="mui-content">
+		<div class="do">
+			<div class="mui-input-row">
+				<label>卡密</label>
+				<input type="text" placeholder="请输入卡密码" />
+			</div>
+			<button type="button" class="mui-btn mui-btn-red">续费</button>
+		</div>
+		
+		<div class="show">
+			<div class="show_image">
+				<div class="show_image_group">
+					<img src="../images/yue.jpg" />
+					<img src="../images/ji.jpg" />
+				</div>
+				<div class="show_image_group">
+					<img src="../images/nian.jpg" />
+					<img src="../images/zhong.jpg" />
+				</div>
+			</div>
+			<div class="show_text">
+				<p>1.点击要购买的卡密类型，并在支持完毕后复制卡密粘贴至上方的卡密输入框（系统会自动粘贴），点击续费即充值成功！</p>
+				<p>2.如遇无法购买或其他问题请通过下方的联系方式咨询客服。</p>
+				<div class="show_contact">
+					<p>QQ：1234566</p>
+					<p>微信：1234818</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript">
+		mui.init();
+	</script>
+</body>
+</html>

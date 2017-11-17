@@ -1,0 +1,52 @@
+create database V character set utf8;
+user V
+
+create table user(
+	id int primary key auto_increment,
+	mobile varchar(20) not null,
+	password varchar(100) not null,
+	superior int,
+	vip_date datetime,
+	consum_point int,
+);
+
+create table information(
+	id int primary key auto_increment,
+	accouncement varchar(10000),
+	qq varchar(20),
+	wechat varchar(50)
+);
+
+create table bo_jigou(
+	id int primary key auto_increment,
+	name varchar(100),
+	headimage varchar(300),
+	channel_count int
+);
+
+create table channel(
+	id int primary key auto_increment,
+	jigou_id int,
+	front_cover varchar(300),
+	name varchar(100),
+	mark varchar(200),
+	rtmp_url varchar(300)
+);
+
+create table camilo(
+	id int primary key auto_increment,
+	text varchar(100),
+	type int
+);
+
+alter table user auto_increment=1000000;
+
+create table agent(
+	id int primary key auto_increment,
+	mobile varchar(20),
+	wechat varchar(50),
+	e-mail varchar(20),
+	password varchar(100),
+	vip_class int,
+	invite_code varchar(10)
+)auto_increment=1000;

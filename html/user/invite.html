@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>invite</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<style type="text/css">
+		body {
+			background-color: f0f1f3;
+		}
+		.mui-bar {
+			background-color: #fdfdfd;
+		}
+		.mui-title {
+			color: #343434;
+			font-weight: bold;
+		}
+		.invite1 {
+			width: 100%;
+			height: 115px;
+			background-color: #FFFFFF;
+			padding-top: 40px;
+		}
+		.invite1 .invite_code {
+			color: #FF4E66;
+			margin-bottom: 25px;
+			font-size: 30px;
+			text-align: center;
+		}
+		.invite1 p{
+			text-align: center;
+			color: #343434;
+		}
+		.invite2 {
+			margin-top: 10px;
+			width: 100%;
+			height: 200px;
+			background-color: #FFFFFF;
+			padding: 20px;
+		}
+		.invite2 .invite_url {
+			margin: 40px auto;
+			text-align: center;
+			color: #333333;
+			font-size: 1.2em;
+		}
+		.invite2 .mui-btn {
+			width: 90%;
+			margin: 0px 5%;
+			background-color: #FF4E66;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+		<h1 class="mui-title">邀请好友</h1>
+	</header>
+	
+	<div class="mui-content">
+		<div class="invite1">
+			<p id="invite_code" class="invite_code">4UF06D</p>
+			<p>邀请码</p>
+		</div>
+		
+		<div class="invite2">
+			<p>邀请链接</p>
+			<p class="invite_url">http://cb06.cn</p>
+			<button type="button" class="mui-btn mui-btn-red">复制链接</button>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script>
+		mui.init();
+		document.getElementById("invite_code").innerText = window.localStorage.getItem("invite_code");
+	</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>login</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<style type="text/css">
+		body {
+			background-color: #FFFFFF;
+		}
+		.exit {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 30px;
+		}
+		.main {
+			margin: 25% auto;
+			width: 80%;
+		}
+		.logo {
+			width: 25%;
+			border-radius: 20%;
+			margin: 10px 37%;
+		}
+		.main form {
+			margin-top: 25%;
+		}
+		.mui-input-group .mui-input-row{
+			display: flex;
+			padding-bottom: 10px;
+			margin-top: 20px;
+		}
+		.mui-input-row img {
+			position: relative;
+			width: 200%;
+		}
+		.mui-input-row label {
+			width: 15%;
+			position: relative;
+			bottom: 10px;
+		}
+		.mui-input-row input {
+			height: 30px;
+		}
+		.forget {
+			float: right;
+			margin-top: 8px;
+			margin-right: 10px;
+			color: #999999;
+			font-size: 0.8em;
+		}
+		.login {
+			display: block;
+			margin-top: 80px;
+			background-color: #FF4E66;
+			width: 100%;
+			padding: 10px 0px;
+			border-radius: 5px;
+			box-shadow: 2px 2px 5px #888888;
+		}
+		.regis {
+			display: block;
+			margin-top: 20px;
+			background-color: #FFFFFF;
+			width: 100%;
+			border: 2px #FF4E66 solid;
+			padding: 10px 0px;
+			border-radius: 5px;
+			color: #FF4E66;
+			font-weight: bold;
+		}
+		/*边框*/
+		.mui-input-group:before {
+			height: 0px;
+		}
+		.mui-input-group::after {
+			height: 0px;
+		}
+		.mui-input-group .mui-input-row::after {
+			height: 0px;
+		}
+		.mui-input-group .mui-input-row {
+			border-bottom: 2px #E5E5E5 solid;
+		}
+	</style>
+</head>
+<body>
+<div id="app">
+	<a class="mui-action-back"> <img class="exit" src="../images/icon/exit.jpg" /> </a>
+	
+	<div class="main">
+		<img class="logo" src="../images/logo.png" />
+		<form class="mui-input-group">
+			<div class="mui-input-row">
+				<label><img src="../images/icon/mobile.jpg" /></label>
+				<input type="text" class="mui-input-clear" placeholder="请输入手机号" v-model="mobile" />
+			</div>
+			<div class="mui-input-row">
+				<label><img src="../images/icon/lock-on.jpg" /></label>
+				<input type="password" class="mui-input-clear" placeholder="请输入密码" v-model="password" />
+			</div>
+			<a href="find.html" class="forget" href="find.html">忘记密码？</a>
+		</form>
+		
+		<button type="button" class="mui-btn mui-btn-red login" @click="do_login">登录</button>
+		<a href="regis.html" type="button" class="mui-btn mui-btn-red regis">注册</a>
+	</div>
+</div>
+
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/vue.min.js" ></script>
+	<script type="text/javascript">
+		mui.init();
+		new Vue({
+			el: "#app",
+			data: {
+				mobile: "",
+				password: "",
+				
+				url: {
+					login: "http://117.27.159.138:8080/v/index.php/home/login/login",
+				},
+				reg: {
+					mobile:/^1[3|4|5|8][0-9]\d{4,8}$/,
+				}
+			},
+			methods: {
+				do_login: function() {
+					if (this.mobile == "")
+						mui.toast("请输入手机号");
+					else if (this.password == "")
+						mui.toast("请输入密码");
+					else
+						mui.ajax(this.url.login, {
+							type: "post",
+							data: {
+								mobile: this.mobile,
+								password: this.password,
+							},
+							dataType: "json",
+							success: function(data) {
+								if (data.status == 3)
+									mui.toast("此手机号未注册");
+								else if (data.status == 2)
+									mui.toast("密码输入错误");
+								else if (data.status == 1) {
+									window.localStorage.setItem("mobile", data.mobile);
+									window.localStorage.setItem("invite_code", data.invite_code);
+									window.localStorage.setItem("id", data.id);
+									window.localStorage.setItem("vip_date", data.vip_date);
+									mui.openWindow("index4.html");
+								}
+							},
+							error: function() {
+								mui.toast("服务器繁忙，请稍后重试");
+							}
+						});
+				}
+			}
+		});
+	</script>
+</body>
+</html>
