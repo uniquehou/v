@@ -1,1 +1,0 @@
-a:8:{i:0;s:2:"id";i:1;s:6:"mobile";i:2;s:8:"password";i:3;s:8:"superior";i:4;s:11:"invite_code";i:5;s:8:"vip_date";s:3:"_pk";s:2:"id";s:5:"_type";a:6:{s:2:"id";s:7:"int(11)";s:6:"mobile";s:11:"varchar(20)";s:8:"password";s:11:"varchar(20)";s:8:"superior";s:7:"int(11)";s:11:"invite_code";s:11:"varchar(10)";s:8:"vip_date";s:8:"datetime";}}

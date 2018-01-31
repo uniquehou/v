@@ -1,51 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<title>index</title>
-	<style type="text/css">
-		.pad_right{ padding-right:2em;}
-#scroll_div {height:26px;overflow: hidden;white-space: nowrap;width:535px;margin-left:10px;}
-#scroll_begin,#scroll_end {display: inline;}
-	</style>
+  <meta charset="UTF-8">
+  <title>video</title>
 </head>
 <body>
-	<div id="scroll_div" class="fl"> 
-  <div id="scroll_begin">
-   恭喜793765***获得 <span class="pad_right">50元巨人点卡奖励</span>
-   恭喜793765***获得 <span class="pad_right">50元巨人点卡奖励</span>
-   恭喜793765***获得 <span class="pad_right">50元巨人点卡奖励</span>
-   恭喜793765***获得 <span class="pad_right">50元巨人点卡奖励</span>
-   恭喜793765***获得 <span class="pad_right">50元巨人点卡奖励</span>
-   恭喜793765***获得 <span class="pad_right">50元巨人点卡奖励</span>
-   恭喜793765***获得 <span class="pad_right">50元巨人点卡奖励</span>
-  </div> 
-  <div id="scroll_end"></div>
- </div>
- 
- <script type="text/javascript">
- 	function ScrollImgLeft(){ 
- var speed=50;
-  var MyMar = null;
- var scroll_begin = document.getElementById("scroll_begin"); 
- var scroll_end = document.getElementById("scroll_end"); 
- var scroll_div = document.getElementById("scroll_div"); 
- scroll_end.innerHTML=scroll_begin.innerHTML; 
- function Marquee(){ 
-  if(scroll_end.offsetWidth-scroll_div.scrollLeft<=0) 
-   scroll_div.scrollLeft-=scroll_begin.offsetWidth; 
-  else
-   scroll_div.scrollLeft++; 
-  } 
-  MyMar=setInterval(Marquee,speed); 
-  scroll_div.onmouseover = function(){
-　　　　　　　clearInterval(MyMar);
-　　　　　}
- 　　　　scroll_div.onmouseout = function(){
-　　　　　　　MyMar = setInterval(Marquee,speed); 　　　　
-　　　　　}  
-}
-ScrollImgLeft();
- </script>
+  <div style="width: 640px; height: 360px; ">
+    <script type="text/javascript" src="../player/sewise.player.min.js?server=live&type=rtmp&streamurl=rtmp://10549.liveplay.myqcloud.com/live/10549_52981b367087_5741bbd2a04d7f8bd8c9&autostart=true&pid=&shifttime=&buffer=5&lang=en_US&logo=http://onvod.sewise.com/libs/swfplayer/skin/images/logo.png&title=LiveVideo&skin=liveWhite"></script>
+</div>
 </body>
 </html>

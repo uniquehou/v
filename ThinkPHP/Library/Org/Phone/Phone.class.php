@@ -10,8 +10,8 @@ class Phone{
 			"op" => $operation
 		);
 		$headers = array();
-	        $headers[] = "X-LC-Id: 2EpXTPFsnQxbQENPrUffgQvm-gzGzoHsz";
-	        $headers[] = "X-LC-Key: r7ohJ0CO588oeiV9wmrc1nA8";
+	        $headers[] = "X-LC-Id: ";
+	        $headers[] = "X-LC-Key: ";
 	        $headers[] = "Content-Type: application/json";
 			
 		$res = $this->curlPost($url,$post_data,$headers);
@@ -24,8 +24,8 @@ class Phone{
 			"mobilePhoneNumber" => $phone,
 			);
 		$headers = array();
-	        $headers[] = "X-LC-Id: 2EpXTPFsnQxbQENPrUffgQvm-gzGzoHsz";
-	        $headers[] = "X-LC-Key: r7ohJ0CO588oeiV9wmrc1nA8";
+	        $headers[] = "X-LC-Id: ";
+	        $headers[] = "X-LC-Key: ";
 	        $headers[] = "Content-Type: application/json";
 	       $res = $this->curlPost($url,$post_data,$headers);
 	       return $res;

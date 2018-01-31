@@ -10,7 +10,7 @@
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "http://117.27.159.138:8080/v/V/user/index1.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"launch_path": "http://www.unihyj.cn/v/html/user/index1.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -167,17 +167,17 @@
 					"iphone": {
 						"default": "", /*iPhone3启动图片选，分辨率：320x480*/
 						"retina35": "",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-						"retina40": ""
+						"retina40": "D:/Downloads/反编译/dex2jar-2.0/r/t/aqd.png","retina55":"D:/Downloads/反编译/dex2jar-2.0/r/t/aqd.png","retina47":"D:/Downloads/反编译/dex2jar-2.0/r/t/aqd.png","retina55l":"D:/Downloads/反编译/dex2jar-2.0/r/t/aqd.png"
 					},
 					"ipad": {
-						"portrait": "", /*iPad竖屏启动图片，分辨率：768x1004*/
-						"portrait-retina": "",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
-						"landscape": "", /*iPad横屏启动图片，分辨率：1024x748*/
-						"landscape-retina": "", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
-						"portrait7": "", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
-						"portrait-retina7": "",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
-						"landscape7": "", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
-						"landscape-retina7": ""
+						"portrait": "D:/Downloads/反编译/dex2jar-2.0/r/t/aqd.png", /*iPad竖屏启动图片，分辨率：768x1004*/
+						"portrait-retina": "D:/Downloads/反编译/dex2jar-2.0/r/t/aqd.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"landscape": "D:/Downloads/反编译/dex2jar-2.0/r/t/aqd.png", /*iPad横屏启动图片，分辨率：1024x748*/
+						"landscape-retina": "D:/Downloads/反编译/dex2jar-2.0/r/t/aqd.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"portrait7": "D:/Downloads/反编译/dex2jar-2.0/r/t/aqd.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						"portrait-retina7": "D:/Downloads/反编译/dex2jar-2.0/r/t/aqd.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "D:/Downloads/反编译/dex2jar-2.0/r/t/aqd.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": "D:/Downloads/反编译/dex2jar-2.0/r/t/aqd.png"
 					}
 				},
 				"android": {
