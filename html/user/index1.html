@@ -211,12 +211,13 @@
 		
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript" src="../js/index.js" ></script>
+		<script type="text/javascript" src="../js/base.js" ></script>
 		<script type="text/javascript">
 			document.querySelectorAll("a.mui-tab-item")[0].classList.add("mui-active");
 			
 			var announcement = document.querySelector("#announcement");
 			// 获取公告内容
-			mui.ajax("http://123.207.254.239/v/index.php/home/login/getAnnouncement", {
+			mui.ajax(domain + "/index.php/home/login/getAnnouncement", {
 				dataType: "text",
 				success: function(text) {
 					announcement.innerText = text;
@@ -277,7 +278,7 @@
 			});
 			
 			function pulldownRefresh() {
-				mui.ajax("http://123.207.254.239/v/index.php/home/login/get_lives", {
+				mui.ajax(domain + "/index.php/home/login/get_lives", {
 					dataType: "json",
 					success: function(lives) {
 						var ul = document.querySelector("ul");

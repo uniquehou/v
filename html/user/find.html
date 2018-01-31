@@ -91,6 +91,7 @@
 </div>
 	<script type="text/javascript" src="../js/mui.min.js" ></script>
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
+	<script type="text/javascript" src="../js/base.js" ></script>
 	<script type="text/javascript">
 		mui.init();
 		new Vue({
@@ -106,8 +107,8 @@
 				verify_flag: 1,         // 倒计时事件
 				
 				url: {
-					send_verify: 'http://123.207.254.239/v/index.php/home/login/send_verify',
-					do_find: 'http://123.207.254.239/v/index.php/home/login/find',
+					send_verify: domain + '/index.php/home/login/send_verify',
+					do_find: domain + '/index.php/home/login/find',
 				},
 				
 				reg:{

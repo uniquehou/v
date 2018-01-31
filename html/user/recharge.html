@@ -104,12 +104,13 @@
 	</div>
 
 	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/base.js" ></script>
 	<script type="text/javascript">
 		mui.init();
 
 		function recharge() {
 			code = document.querySelector("#code").value;
-			mui.ajax("http://123.207.254.239/v/index.php/home/login/recharge", {
+			mui.ajax(domain + "/index.php/home/login/recharge", {
 				type: "POST",
 				dataType: "text",
 				data: {

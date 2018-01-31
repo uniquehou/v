@@ -111,6 +111,7 @@
 
 	<script type="text/javascript" src="../js/mui.min.js" ></script>
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
+	<script type="text/javascript" src="../js/base.js" ></script>
 	<script type="text/javascript">
 		mui.init();
 		new Vue({
@@ -120,7 +121,7 @@
 				password: "",
 				
 				url: {
-					login: "http://123.207.254.239/v/index.php/home/login/login",
+					login: domain + "/index.php/home/login/login",
 				},
 				reg: {
 					mobile:/^1\d{2}\d{4,8}$/,
